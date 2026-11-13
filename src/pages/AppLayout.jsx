@@ -1,10 +1,10 @@
 import PageNav from "../componets/PageNav"
-
+import AppNav from "../componets/AppNav"
 function AppLayout() {
     return (
         <div>
-            <PageNav />
-            AppLayout
+            <AppNav />
+            <p>app</p>
         </div>
     )
 }
