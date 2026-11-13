@@ -1,7 +1,7 @@
 function produc() {
     return (
         <div>
-            
+            product
         </div>
     )
 }
