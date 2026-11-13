@@ -1,9 +1,9 @@
-function produc() {
+function Product() {
     return (
         <div>
             product
         </div>
-    )
+    );
 }
 
-export default produc
+export default Product;
