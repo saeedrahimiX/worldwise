@@ -1,6 +1,7 @@
 function Pricing() {
     return (
         <div>
+            <PageNav/>
             Pricing
         </div>
     )
