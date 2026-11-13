@@ -6,7 +6,7 @@ function HomePage() {
     <div>
       Wordwise
       <PageNav />
-      <Link to="/pricing">Pricing</Link>
+      <Link to="/app">Go to app</Link>
     </div>
   );
 }
