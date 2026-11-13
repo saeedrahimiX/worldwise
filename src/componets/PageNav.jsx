@@ -11,7 +11,7 @@ function PageNav() {
         <li>
           <Link to="/pricing">Pricing</Link>
         </li>
-         <li>
+        <li>
           <Link to="/product">product</Link>
         </li>
       </ul>
@@ -19,4 +19,4 @@ function PageNav() {
   );
 }
 
-export default Pagenav;
+export default PageNav;

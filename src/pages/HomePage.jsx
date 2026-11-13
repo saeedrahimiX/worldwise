@@ -1,14 +1,14 @@
-
 import { Link } from "react-router-dom";
-import PageNav from "../components/PageNav";
+import PageNav from "../componets/PageNav";
+
 function HomePage() {
-    return (
-        <div>
-            Wordwise
-            <PageNav/>
-            <Link to="/pricing">Pricing</Link>
-        </div>
-    )
+  return (
+    <div>
+      Wordwise
+      <PageNav />
+      <Link to="/pricing">Pricing</Link>
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;
