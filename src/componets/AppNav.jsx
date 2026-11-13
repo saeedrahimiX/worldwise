@@ -1,10 +1,10 @@
 
-import {nav} from "./AppNav.module.css" 
+import style from "./AppNav.module.css" 
 
 
 function AppNav() {
     return (
-        <div className={nav}>
+        <div className={style.nav}>
             app nav
         </div>
     )
