@@ -8,7 +8,8 @@ import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import CityList from "./components/CityList";
 
-const Base= window.location.pathname.startsWith("/worldwise") ? "/worldwise" : "/";
+const routerBase = window.location.pathname.startsWith("/worldwise") ? "/worldwise" : "/";
+const BASE_URL = "http://localhost:8000";
 
 function App() {
   const [cities, setCities] = useState([]);
@@ -18,7 +19,7 @@ function App() {
     async function fetchCities() {
       setIsLoading(true);
       try {
-        const res = await fetch("/cities.json");
+        const res = await fetch(`${BASE_URL}/cities`);
         const data = await res.json();
         setCities(data.cities || data || []);
       } catch (error) {
