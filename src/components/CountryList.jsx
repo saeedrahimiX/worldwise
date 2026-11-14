@@ -2,7 +2,7 @@ import styles from "./CountryList.module.css";
 import Spinner from "./Spinner";
 import CityItem from "./CityItem";
 import Message from "./Message";
-
+import CountryItem from "./CountryItem";
 function CountryList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
 
@@ -19,7 +19,7 @@ const countries = cities.reduce((acc, city) => {
   return (
     <ul className={styles.CountryList}>
       {countries.map((country) => (
-        <li key={country}>{country}</li>
+        <CountryItem key={country} country={country} />
       ))}
     </ul>
   );
