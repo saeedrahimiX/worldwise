@@ -18,7 +18,7 @@ function App() {
     async function fetchCities() {
       setIsLoading(true);
       try {
-        const res = await fetch("./cities.json");
+        const res = await fetch("/cities.json");
         const data = await res.json();
         setCities(data.cities || data || []);
       } catch (error) {
