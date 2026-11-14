@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
@@ -7,34 +8,28 @@ import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import CityList from "./components/CityList";
 
-
-
-const BASE_URL = "http://localhost:8000/cities";
+const BASE_URL = "http://localhost:8000";
 
 function App() {
-  const [cities, setCities] = useState({ });
+  const [cities, setCities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-
-useEffect(function () {
-
-  async function fetchCities() {
-    setIsLoading(true);
-    try {
-      const res = await fetch(`${BASE_URL}/cities.json`);
-      log(res);
-      const data = await res.json();
-      log(data);
-      setCities(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
+  useEffect(function () {
+    async function fetchCities() {
+      setIsLoading(true);
+      try {
+        const res = await fetch(`${BASE_URL}/cities`);
+        const data = await res.json();
+        setCities(data.cities || data || []);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }
 
-  fetchCities();
-}, []);
+    fetchCities();
+  }, []);
 
   return (
     <>
@@ -45,11 +40,10 @@ useEffect(function () {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/app" element={<AppLayout />}>
-            <Route path="cities" element={<CityList />} />
-            <Route index element={<CityList />} />
+            <Route index element={<CityList cities={cities} isLoading={isLoading} />} />
+            <Route path="cities" element={<CityList cities={cities} isLoading={isLoading} />} />
             <Route path="countries" element={<p>Countries</p>} />
             <Route path="form" element={<p>Form</p>} />
-            <Route index element={<p>App Home</p>} />
           </Route>
           <Route path="*" element={<PageNotfound />} />
         </Routes>
