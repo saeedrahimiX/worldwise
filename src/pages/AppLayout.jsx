@@ -1,5 +1,5 @@
-import PageNav from "../componets/PageNav"
-import AppNav from "../componets/AppNav"
+import PageNav from "../components/PageNav"
+import AppNav from "../components/AppNav"
 function AppLayout() {
     return (
         <div>
