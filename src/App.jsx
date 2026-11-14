@@ -7,7 +7,7 @@ import PageNotfound from "./pages/PageNotfound";
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import CityList from "./components/CityList";
-import CountriesList from "./components/CountriesList";
+import CountryList from "./components/CountryList";
 const routerBase = window.location.pathname.startsWith("/worldwise") ? "/worldwise" : "/";
 const BASE_URL = "http://localhost:8000";
 
