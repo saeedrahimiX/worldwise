@@ -10,11 +10,16 @@ function CountryList({ cities, isLoading }) {
     return (
       <Message message="No cities added yet! Add your first city to get started." />
     );
-
+const countries = cities.reduce((acc, city) => {
+    if (!acc.includes(city.country)) {
+      acc.push(city.country);
+    }
+    return acc;
+  }, []);
   return (
     <ul className={styles.CountryList}>
-      {cities.map((city) => (
-        <CityItem key={city.id} city={city} />
+      {countries.map((country) => (
+        <li key={country}>{country}</li>
       ))}
     </ul>
   );
