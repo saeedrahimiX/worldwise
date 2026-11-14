@@ -3,6 +3,9 @@ import Spinner from "./Spinner";
 import CityItem from "./CityItem";
 function CityList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
+
+if (!cities || cities.length === 0) return <p>No cities found</p>;
+
   return (
     <ul className={styles.cityList}>
       {cities.map((city) => (
