@@ -8,7 +8,7 @@ import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import CityList from "./components/CityList";
 
-const routerBase = window.location.pathname.startsWith("/worldwise") ? "/worldwise" : "/";
+const Base= window.location.pathname.startsWith("/worldwise") ? "/worldwise" : "/";
 
 function App() {
   const [cities, setCities] = useState([]);
