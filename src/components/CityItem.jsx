@@ -1,5 +1,5 @@
 function CityItem({ city }) {
-  return <li></li>;
+  return <li>city</li>;
 }
 
 export default CityItem;

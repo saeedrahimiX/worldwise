@@ -1,6 +1,6 @@
 import styles from "./CityList.module.css";
 import Spinner from "./Spinner";
-import cityItem from "./CityItem";
+import CityItem from "./CityItem";
 function CityList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
   return (
