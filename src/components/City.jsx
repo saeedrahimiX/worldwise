@@ -3,7 +3,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useCities } from "../contexts/CitiesContext";
 import styles from "./City.module.css";
 import Spinner from "./Spinner";
-
+import BackButton from "./BackButton";
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -76,7 +76,7 @@ function City() {
         </div>
 
         <div>
-          <ButtonBack />
+          <BackButton />
         </div>
       </div>
     </>

@@ -24,7 +24,7 @@ function CityItem({ city }) {
    
       <time className={styles.date}>({formatDate(date)})</time>
 
-      <BackButton />
+      
       
       </Link>
       
