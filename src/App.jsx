@@ -15,25 +15,7 @@ const routerBase = window.location.pathname.startsWith("/worldwise") ? "/worldwi
 const BASE_URL = "http://localhost:8000";
 
 function App() {
-  const [cities, setCities] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(function () {
-    async function fetchCities() {
-      setIsLoading(true);
-      try {
-        const res = await fetch(`${BASE_URL}/cities`);
-        const data = await res.json();
-        setCities(data.cities || data || []);
-      } catch (error) {
-        console.error("Failed to load cities:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchCities();
-  }, []);
+  
 
   return (
     <>
