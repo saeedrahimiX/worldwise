@@ -1,7 +1,15 @@
-import { createContext, useState, useEffect } from "react";
-import { useContext } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  useMemo,
+} from "react";
+
 const CitiesContext = createContext();
 const BASE_URL = "http://localhost:8000";
+
 function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,22 +31,27 @@ function CitiesProvider({ children }) {
 
     fetchCities();
   }, []);
-  async function getCity(id) {
+
+  const getCity = useCallback(async function getCity(id) {
     try {
       setIsLoading(true);
       const res = await fetch(`${BASE_URL}/cities/${id}`);
       const data = await res.json();
-      setCurrentCity(data.cities || data || []);
+      setCurrentCity(data || null);
     } catch (error) {
-      console.error("Failed to load cities:", error);
+      console.error("Failed to load city:", error);
     } finally {
       setIsLoading(false);
     }
-  }
+  }, []);
+
+  const value = useMemo(
+    () => ({ cities, isLoading, currentCity, getCity }),
+    [cities, isLoading, currentCity, getCity]
+  );
+
   return (
-    <CitiesContext.Provider value={{ cities, isLoading, currentCity,getCity }}>
-      {children}
-    </CitiesContext.Provider>
+    <CitiesContext.Provider value={value}>{children}</CitiesContext.Provider>
   );
 }
 

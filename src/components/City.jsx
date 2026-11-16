@@ -1,6 +1,8 @@
+import { useEffect } from "react";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useCities } from "../contexts/CitiesContext";
 import styles from "./City.module.css";
-import { useParams } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -9,20 +11,26 @@ const formatDate = (date) =>
     weekday: "long",
   }).format(new Date(date));
 
+function ButtonBack() {
+  const navigate = useNavigate();
+
+  return (
+    <button type="button" onClick={() => navigate(-1)}>
+      &larr; Back
+    </button>
+  );
+}
+
 function City() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const { getCity, currentCity } = useCities();
 
   useEffect(() => {
     getCity(id);
-  }, [id]);
+  }, [id, getCity]);
 
-  // const currentCity = {
-  //   cityName: "Lisbon",
-  //   emoji: "🇵🇹",
-  //   date: "2027-10-31T15:59:59.138Z",
-  //   notes: "My favorite city so far!",
-  // };
+  if (!currentCity) return <p>Loading city...</p>;
 
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
@@ -32,7 +40,7 @@ function City() {
     <>
       <p>
         City {id}
-        position:{lat}, {lng}
+        position: {lat}, {lng}
       </p>
       <div className={styles.city}>
         <div className={styles.row}>
