@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useCities } from "../contexts/CitiesContext";
 import styles from "./City.module.css";
+import Spinner from "./Spinner";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -24,13 +25,14 @@ function ButtonBack() {
 function City() {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
-  const { getCity, currentCity } = useCities();
+  const { getCity, currentCity ,isLoading} = useCities();
 
   useEffect(() => {
     getCity(id);
   }, [id, getCity]);
 
-  if (!currentCity) return <p>Loading city...</p>;
+  if (isLoading) return <Spinner />;
+  if (!currentCity) return <p>City not found.</p>;
 
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
