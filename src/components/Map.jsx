@@ -8,18 +8,20 @@ function Map() {
   const navigate = useNavigate();
   const { cities } = useCities();
   const [searchParams] = useSearchParams();
-  const [mapPosition] = useState([40,0]);
+  const [mapPosition] = useState([40, 0]);
 
-  const mapLat = searchParams.get("lat");
-  const mapLng = searchParams.get("lng");
+  const mapLat = Number(searchParams.get("lat") ?? mapPosition[0]);
+  const mapLng = Number(searchParams.get("lng") ?? mapPosition[1]);
+  const center = Number.isFinite(mapLat) && Number.isFinite(mapLng)
+    ? [mapLat, mapLng]
+    : mapPosition;
 
   return (
     <div className={styles.mapContainer} onClick={() => navigate("form")}>
       <MapContainer
         className={styles.map}
-        // center={mapPosition}
-        center={[mapLat, mapLng]}
-        zoom={6 }
+        center={center}
+        zoom={6}
         scrollWheelZoom={true}
       >
         <TileLayer

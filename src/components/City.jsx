@@ -40,10 +40,7 @@ function City() {
 
   return (
     <>
-      <p>
-        City {id}
-        position: {lat}, {lng}
-      </p>
+      
       <div className={styles.city}>
         <div className={styles.row}>
           <h6>City name</h6>
