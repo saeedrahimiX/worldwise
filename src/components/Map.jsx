@@ -1,6 +1,6 @@
 import styles from "./Map.module.css";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvent } from "react-leaflet";
 import { useEffect, useState } from "react";
 import { useCities } from "../contexts/CitiesContext";
 
@@ -61,6 +61,10 @@ function ChangeCenter({ position }) {
   }, [map, position]);
 
   return null;
+}
+
+function DetectClick() { 
+  
 }
 
 export default Map;
