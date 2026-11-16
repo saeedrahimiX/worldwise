@@ -10,7 +10,7 @@ import CountryList from "./components/CountryList";
 import City from "./components/City";
 import Form from "./components/Form";
 import { Navigate } from "react-router-dom";
-import { CitiesProvider ,useCities} from "./contexts/CitiesContext";
+import { CitiesProvider } from "./contexts/CitiesContext";
 const routerBase = window.location.pathname.startsWith("/worldwise")
   ? "/worldwise"
   : "/";
