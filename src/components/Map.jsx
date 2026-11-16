@@ -10,15 +10,16 @@ function Map() {
   const [searchParams] = useSearchParams();
   const [mapPosition] = useState([40,0]);
 
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
+  const mapLat = searchParams.get("lat");
+  const mapLng = searchParams.get("lng");
 
   return (
     <div className={styles.mapContainer} onClick={() => navigate("form")}>
       <MapContainer
         className={styles.map}
-        center={mapPosition}
-        zoom={13}
+        // center={mapPosition}
+        center={[mapLat, mapLng]}
+        zoom={6 }
         scrollWheelZoom={true}
       >
         <TileLayer
@@ -37,7 +38,7 @@ function Map() {
         ))}
       </MapContainer>
       <p>
-        {lat}, {lng}
+        {mapLat}, {mapLng}
       </p>
     </div>
   );
