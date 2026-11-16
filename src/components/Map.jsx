@@ -8,7 +8,7 @@ function Map() {
   const navigate = useNavigate();
   const { cities } = useCities();
   const [searchParams] = useSearchParams();
-  const [mapPosition] = useState([51.505, -0.09]);
+  const [mapPosition] = useState([40,0]);
 
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
@@ -31,7 +31,7 @@ function Map() {
             position={[city.position.lat, city.position.lng]}
           >
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+            {city.cityName} {city.emoji}
             </Popup>
           </Marker>
         ))}
