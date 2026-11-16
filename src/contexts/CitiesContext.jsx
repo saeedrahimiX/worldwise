@@ -1,8 +1,8 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const CitiesContext = createContext();
-
-function CitiesContext() {
+const BASE_URL = "http://localhost:8000";
+function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,7 +23,11 @@ function CitiesContext() {
     fetchCities();
   }, []);
 
-  return <div></div>;
+  return (
+    <CitiesContext.Provider value={{ cities, isLoading }}>
+      {children}
+    </CitiesContext.Provider>
+  );
 }
 
-export default CitiesContext;
+export { CitiesProvider};
